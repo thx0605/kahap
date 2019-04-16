@@ -54,7 +54,7 @@
                                 <td>{{ $data -> email }}</td>
                                 <td>{{ $data -> phone }}</td>
                                 <td>{{ $data -> address }}</td>
-                                <td><a href="{{route('members').'/edit/'.$data -> id}}">Edit</a></td>
+                                <td><a class="btn btn-info" href="{{route('members').'/edit/'.$data -> id}}">Edit</a></td>
                             </tr>
                         @endforeach
                         </tbody>

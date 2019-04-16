@@ -13,4 +13,9 @@ class MembersController extends Controller
         $datas = Member::all();
         return view('members.index',['datas' => $datas]);
     }
+
+    public function create()
+    {
+        return view('members.create');
+    }
 }
