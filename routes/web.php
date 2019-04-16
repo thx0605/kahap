@@ -12,5 +12,41 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect() -> route('');
+});
+Route::group(['prefix' => 'admin'], function() {
+
+    Route::get('/',[
+        'as' => 'index',
+        'uses' => 'HomeController@index'
+    ]);
+
+    Route::group(['prefix' => 'members'], function() {
+
+        Route::get('/',[
+            'as' => 'members',
+            'uses' => 'MembersController@index'
+        ]);
+        Route::get('create',[
+            'as' => 'create',
+            'uses' => 'MembersController@create'
+        ]);
+        Route::post('create',[
+            'as' => 'createPost',
+            'uses' => 'MembersController@createPost'
+        ]);
+        Route::get('edit',[
+            'as' => 'edit',
+            'uses' => 'MembersController@edit'
+        ]);
+        Route::put('edit',[
+            'as' => 'editPost',
+            'uses' => 'MembersController@editPost'
+        ]);
+        Route::delete('delete',[
+            'as' => 'delete',
+            'uses' => 'MembersController@delete'
+        ]);
+    });
+
 });
