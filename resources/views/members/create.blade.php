@@ -2,6 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <form method="post" action="{{route('createPost')}}">
+        @csrf
         <div class="form-group">
             <div class="col-md-6">
                 <label for="name">Name</label>

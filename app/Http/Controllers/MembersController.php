@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Member;
-use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MembersController extends Controller
 {
@@ -22,24 +22,47 @@ class MembersController extends Controller
 
     public function createPost(Request $request)
     {
-//        dd($request->all());
-//        $rules = [
-//            'name' => 'required',
-//            'gender' => 'required',
-//            'birthday' => 'required|date',
-//            'email' => 'required|email',
-//            'phone' => 'required|numeric',
-//            'address' => 'required'
-//        ];
-//        $validator = Validator::make($request -> all(),$rules);
-//        if($validator -> fails()) {
-//            return back()
-//                ->withErrors($validator)
-//                ->withInput();
-//        }
-//        Member::create([
-//
-//        ]);
-//        return view('members.create');
+        $rules = [
+            'name' => 'required',
+            'gender' => 'required',
+            'birthday' => 'required|date',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
+            'address' => 'required'
+        ];
+        $validator = Validator::make($request -> all(),$rules);
+        if($validator -> fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        Member::create([
+            'name' => $request -> name,
+            'gender' => $request -> gender,
+            'birthday' => $request -> birthday,
+            'email' => $request -> email,
+            'phone' => $request -> phone,
+            'address' => $request -> address
+        ]);
+        return back();
+    }
+
+    public function edit($id)
+    {
+        $data = Member::Where('id',$id) -> first();
+        return view('members.edit',['data' => $data]);
+    }
+
+    public function editPost(Request $request)
+    {
+        $data = Member::Where('id',$id) -> first();
+        return view('members.edit',['data' => $data]);
+    }
+
+    public function delete(Request $request)
+    {
+        $id = explode(',',$request->delete_input);
+        Member::WhereIn('id',$id) -> delete();
+        return back();
     }
 }
