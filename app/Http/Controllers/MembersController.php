@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MemberRequest;
 use App\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -20,14 +21,14 @@ class MembersController extends Controller
         return view('members.create');
     }
 
-    public function createPost(Request $request)
+    public function createPost(MemberRequest $request)
     {
-        $validator = Validator::make($request -> all(),$rules);
-        if($validator -> fails()) {
-            return back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+//        $validator = Validator::make($request -> all(),$rules);
+//        if($validator -> fails()) {
+//            return back()
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
         Member::create([
             'name' => $request -> name,
             'gender' => $request -> gender,

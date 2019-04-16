@@ -29,7 +29,7 @@ use Faker\Generator as Faker;
     $factory -> define(Member::class, function (Faker $faker) {
         return [
             'name' => $faker -> name,
-            'gender' => $faker -> numberBetween(0,1)==0?'female':'male',
+            'gender' => $faker -> numberBetween(0,1)==0?'Female':'Male',
             'birthday' => $faker -> date,
             'email' => $faker -> email,
             'phone' => $faker -> phoneNumber,
