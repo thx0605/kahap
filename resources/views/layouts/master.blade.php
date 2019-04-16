@@ -33,7 +33,10 @@
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
-        @yield('content')
+        <div id="content">
+            @include('layouts.topbar')
+            @yield('content')
+        </div>
         <!-- End of Main Content -->
 
         <!-- Footer -->
@@ -80,12 +83,7 @@
 <!-- Custom scripts for all pages-->
 <script src="{{asset('asset/js/sb-admin-2.min.js')}}"></script>
 
-<!-- Page level plugins -->
-<script src="{{asset('asset/vendor/chart.js/Chart.min.js')}}"></script>
 
-<!-- Page level custom scripts -->
-<script src="{{asset('asset/js/demo/chart-area-demo.js')}}"></script>
-<script src="{{asset('asset/js/demo/chart-pie-demo.js')}}"></script>
 @yield('javascript')
 </body>
 
