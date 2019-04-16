@@ -30,7 +30,7 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('members')}}">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-fw fa-table"></i>
             <span>Members</span></a>
     </li>
     <!-- Divider -->

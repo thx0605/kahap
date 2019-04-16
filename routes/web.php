@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function() {
             'as' => 'createPost',
             'uses' => 'MembersController@createPost'
         ]);
-        Route::get('edit',[
+        Route::get('edit/{id}',[
             'as' => 'edit',
             'uses' => 'MembersController@edit'
         ]);
