@@ -17,7 +17,7 @@ class CreateMembersTable extends Migration
             $table -> bigIncrements('id');
             $table -> string('name');
             $table -> string('gender');
-            $table -> string('birthday');
+            $table -> date('birthday');
             $table -> string('email');
             $table -> string('phone');
             $table -> string('address');
