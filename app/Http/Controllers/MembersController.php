@@ -22,14 +22,6 @@ class MembersController extends Controller
 
     public function createPost(Request $request)
     {
-        $rules = [
-            'name' => 'required',
-            'gender' => 'required',
-            'birthday' => 'required|date',
-            'email' => 'required|email',
-            'phone' => 'required|numeric',
-            'address' => 'required'
-        ];
         $validator = Validator::make($request -> all(),$rules);
         if($validator -> fails()) {
             return back()
