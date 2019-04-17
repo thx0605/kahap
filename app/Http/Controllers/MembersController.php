@@ -12,7 +12,7 @@ class MembersController extends Controller
     //
     public function index()
     {
-        $datas = Member::all();
+        $datas = Member::latest() -> paginate(10);
         return view('members.index',['datas' => $datas]);
     }
 
@@ -23,12 +23,6 @@ class MembersController extends Controller
 
     public function createPost(MemberRequest $request)
     {
-//        $validator = Validator::make($request -> all(),$rules);
-//        if($validator -> fails()) {
-//            return back()
-//                ->withErrors($validator)
-//                ->withInput();
-//        }
         Member::create([
             'name' => $request -> name,
             'gender' => $request -> gender,
@@ -37,7 +31,7 @@ class MembersController extends Controller
             'phone' => $request -> phone,
             'address' => $request -> address
         ]);
-        return back();
+        return redirect() -> route('members');
     }
 
     public function edit($id)
@@ -48,14 +42,22 @@ class MembersController extends Controller
 
     public function editPost(Request $request)
     {
-        $data = Member::Where('id',$id) -> first();
-        return view('members.edit',['data' => $data]);
+        $id = $request -> id;
+        $member = Member::Where('id',$id) -> first();
+        $member -> name = $request -> name;
+        $member -> gender = $request -> gender;
+        $member -> birthday = $request -> birthday;
+        $member -> email = $request -> email;
+        $member -> phone = $request -> phone;
+        $member -> address = $request -> address;
+        $member -> save();
+        return redirect() -> route('members');
     }
 
     public function delete(Request $request)
     {
         $id = explode(',',$request->delete_input);
         Member::WhereIn('id',$id) -> delete();
-        return back();
+        return redirect() -> route('members');
     }
 }

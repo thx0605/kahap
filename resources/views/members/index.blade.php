@@ -15,11 +15,27 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                <h6 class="m-0 font-weight-bold text-primary">MemberTables</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <div class="block-content bg-body-light">
+                        <!-- Search -->
+                        <form action="#" method="post" onsubmit="return true;">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search Member..">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-secondary">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END Search -->
+                    </div>
+                    <table class="table" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th><input name="all" type="checkbox"></th>
@@ -32,18 +48,6 @@
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <tfoot>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Gender</th>
-                            <th>Birthday</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Actions</th>
-                        </tr>
-                        </tfoot>
                         <tbody>
                         @foreach($datas as $data)
                             <tr>
@@ -59,6 +63,11 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <nav aria-label="Products navigation">
+                        <ul class="pagination justify-content-end">
+                            {{$datas->links()}}
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

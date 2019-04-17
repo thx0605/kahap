@@ -3,6 +3,8 @@
     <div class="container-fluid">
         <form method="post" action="{{route('editPost')}}">
             @csrf
+            <input type="hidden" name="id" value="{{$data -> id}}">
+            <input type="hidden" name="_method" value="PUT">
             <div class="form-group">
                 <div class="col-md-6">
                     <label for="name">Name</label>
@@ -11,7 +13,7 @@
                 <div class="col-md-6">
                     <label for="gender">Gender</label>
                     <select id="gender" name="gender" class="form-control">
-                        @if($data -> gender == 'male')
+                        @if($data -> gender == 'Male')
                             <option selected>Male</option>
                             <option >Female</option>
                         @else
