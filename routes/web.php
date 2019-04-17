@@ -47,6 +47,10 @@ Route::group(['prefix' => 'admin'], function() {
             'as' => 'delete',
             'uses' => 'MembersController@delete'
         ]);
+        Route::post('search',[
+            'as' => 'search',
+            'uses' => 'MembersController@search'
+        ]);
     });
 
 });

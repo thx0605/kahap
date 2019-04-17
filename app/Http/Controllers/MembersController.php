@@ -60,4 +60,11 @@ class MembersController extends Controller
         Member::WhereIn('id',$id) -> delete();
         return redirect() -> route('members');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request -> search;
+        $datas = Member::Search($search)->get();
+        dd($datas);
+    }
 }

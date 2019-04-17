@@ -21,10 +21,11 @@
                 <div class="table-responsive">
                     <div class="block-content bg-body-light">
                         <!-- Search -->
-                        <form action="#" method="post" onsubmit="return true;">
+                        <form action="{{route('search')}}" method="post" onsubmit="return true;">
+                            @csrf
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search Member..">
+                                    <input type="text" class="form-control" name="search" placeholder="Search Member..">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-secondary">
                                             <i class="fa fa-search"></i>
