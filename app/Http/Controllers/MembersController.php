@@ -63,8 +63,8 @@ class MembersController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request -> search;
-        $datas = Member::Search($search)->get();
-        dd($datas);
+        $search = $request -> get('search');
+        $datas = Member::Where('name','like','%'.$search.'%') -> paginate(10);
+        return view('members.index',['datas' => $datas]);
     }
 }

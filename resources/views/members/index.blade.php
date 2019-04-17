@@ -21,8 +21,7 @@
                 <div class="table-responsive">
                     <div class="block-content bg-body-light">
                         <!-- Search -->
-                        <form action="{{route('search')}}" method="post" onsubmit="return true;">
-                            @csrf
+                        <form action="{{route('search')}}" method="get" onsubmit="return true;">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="search" placeholder="Search Member..">

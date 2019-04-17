@@ -47,10 +47,11 @@ Route::group(['prefix' => 'admin'], function() {
             'as' => 'delete',
             'uses' => 'MembersController@delete'
         ]);
-        Route::post('search',[
+        Route::get('search',[
             'as' => 'search',
             'uses' => 'MembersController@search'
         ]);
+
     });
 
 });
